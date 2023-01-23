@@ -71,8 +71,6 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
         m_currentLogger = m_autonLogger;
 
-        m_autonCommand = m_robotContainer.getAutonomousCommand();
-
         if (m_autonCommand != null) {
             m_autonCommand.schedule();
         }
