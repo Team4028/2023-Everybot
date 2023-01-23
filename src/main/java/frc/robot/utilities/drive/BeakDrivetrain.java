@@ -35,6 +35,7 @@ public class BeakDrivetrain extends BeakGyroSubsystem {
     protected SimpleMotorFeedforward m_feedForward;
 
     protected ProfiledPIDController m_thetaController;
+    protected PIDController m_autonThetaController;
     protected PIDController m_driveController;
 
     /**
@@ -67,6 +68,11 @@ public class BeakDrivetrain extends BeakGyroSubsystem {
                 thetaPIDGains[1],
                 thetaPIDGains[2],
                 thetaConstraints);
+
+        m_autonThetaController = new PIDController(
+                thetaPIDGains[0],
+                thetaPIDGains[1],
+                thetaPIDGains[2]);
 
         m_driveController = new PIDController(
                 drivePIDGains[0],

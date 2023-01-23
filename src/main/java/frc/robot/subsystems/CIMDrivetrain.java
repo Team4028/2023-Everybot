@@ -82,7 +82,7 @@ public class CIMDrivetrain extends BeakDifferentialDrivetrain {
             m_gyroSim = new AnalogGyroSim(0);
         }
 
-        m_odom = new DifferentialDriveOdometry(getGyroRotation2d());
+        m_odom = new DifferentialDriveOdometry(getGyroRotation2d(), 0., 0.);
 
         m_FL = new BeakTalonSRX(FL_ID);
         m_BL = new BeakTalonSRX(BL_ID);
@@ -124,7 +124,6 @@ public class CIMDrivetrain extends BeakDifferentialDrivetrain {
     }
 
     public void configPID() {
-        // TODO: get these from SysId
         double maxVel = 44788.395;
 
         m_FL.setPIDF(kP, 0., kD, m_FL.calculateFeedForward(1, maxVel), 0);

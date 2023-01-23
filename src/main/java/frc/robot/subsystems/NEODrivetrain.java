@@ -82,7 +82,7 @@ public class NEODrivetrain extends BeakDifferentialDrivetrain {
             m_gyroSim = new AnalogGyroSim(0);
         }
 
-        m_odom = new DifferentialDriveOdometry(getGyroRotation2d());
+        m_odom = new DifferentialDriveOdometry(getGyroRotation2d(), 0., 0.);
 
         m_FL = new BeakSparkMAX(FL_ID);
         m_BL = new BeakSparkMAX(BL_ID);
@@ -128,7 +128,6 @@ public class NEODrivetrain extends BeakDifferentialDrivetrain {
     }
 
     public void configPID() {
-        // TODO: get these from SysId
         // double maxVel = 7380.63;
 
         m_FL.setPIDF(kP, 0., kD, 0., 0);

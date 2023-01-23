@@ -87,7 +87,7 @@ public class FalconDrivetrain extends BeakDifferentialDrivetrain implements Beak
             m_gyroSim = new AnalogGyroSim(0);
         }
 
-        m_odom = new DifferentialDriveOdometry(getGyroRotation2d());
+        m_odom = new DifferentialDriveOdometry(getGyroRotation2d(), 0., 0.);
 
         m_FL = new BeakTalonFX(FL_ID, CAN_BUS);
         m_BL = new BeakTalonFX(BL_ID, CAN_BUS);
@@ -131,7 +131,6 @@ public class FalconDrivetrain extends BeakDifferentialDrivetrain implements Beak
     }
 
     public void configPID() {
-        // TODO: get these from SysId
         double maxVel = 26638.923;
 
         m_FL.setPIDF(kP, 0., kD, m_FL.calculateFeedForward(1, maxVel), 0);

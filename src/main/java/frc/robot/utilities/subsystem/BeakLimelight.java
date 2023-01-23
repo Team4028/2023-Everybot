@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 /** Basic Limelight subsystem. */
 public class BeakLimelight extends SubsystemBase {
     /* Height of the goal, in inches--based on the center of the reflective tape */
-    public static double TARGET_HEIGHT = 0.; // Rapid React
+    public static double TARGET_HEIGHT = 0.;
 
     public enum TargetHeight {
         RAPID_REACT(104.);
@@ -58,7 +58,7 @@ public class BeakLimelight extends SubsystemBase {
 
     /** Creates a new Limelight. */
     public BeakLimelight() {
-        setPipeline(1);
+        setPipeline(0);
         setPictureInPicture(0);
         setLedMode(0);
     }
@@ -151,7 +151,7 @@ public class BeakLimelight extends SubsystemBase {
      *             </p>
      */
     public void setLedMode(double mode) {
-        ledMode.forceSetDouble(mode);
+        ledMode.setDouble(mode);
     }
 
     public void toggleLedMode() {

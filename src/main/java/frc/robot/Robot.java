@@ -6,14 +6,11 @@ package frc.robot;
 
 import com.revrobotics.REVPhysicsSim;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.sim.CTREPhysicsSim;
-import frc.robot.subsystems.Limelight;
 import frc.robot.utilities.log.BeakLogger;
 
 /**
@@ -36,8 +33,6 @@ public class Robot extends TimedRobot {
     private Command m_autonCommand;
     private RobotContainer m_robotContainer;
 
-    private Limelight m_limelight;
-
     public static BeakLogger getCurrentLogger() {
         return m_currentLogger;
     }
@@ -50,8 +45,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         m_robotContainer = RobotContainer.getInstance();
-        
-        Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
+        // Solenoid m_solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
 
         // try {
         //     m_autonLogger = new BeakLogger(m_logFileFolder, "auton");
@@ -63,8 +57,6 @@ public class Robot extends TimedRobot {
         // }
 
         m_currentLogger = m_disabledLogger;
-
-        m_limelight = Limelight.getInstance();
 
         // m_robotContainer.logAllConfigs();
         LiveWindow.disableAllTelemetry();
@@ -95,8 +87,6 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         m_currentLogger = m_teleopLogger;
-
-        m_limelight.setLedMode(0);
         
         if (m_autonCommand != null) {
             m_autonCommand.cancel();

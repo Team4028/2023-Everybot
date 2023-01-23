@@ -27,19 +27,54 @@ public class Trajectories {
                 drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond());
     }
 
-    public static PathPlannerTrajectory JStop1(BeakDrivetrain drivetrain) {
-        return PathPlanner.loadPath("J Stop 1",
+    public static PathPlannerTrajectory CarsonVPath(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("Carson V Path",
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond(),
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond());
+    }
+
+    public static PathPlannerTrajectory SamPath(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("Sam Path",
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond(),
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond());
+    }
+    
+    public static PathPlannerTrajectory NickPath(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("Nick Path",
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond(),
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond());
+    }
+    public static PathPlannerTrajectory JPath1(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("j path 1",
                 drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.5,
                 drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.5);
     }
 
-    public static PathPlannerTrajectory JStop2(BeakDrivetrain drivetrain) {
-        return PathPlanner.loadPath("J Stop 2",
+    public static PathPlannerTrajectory JPath2(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("j path 2",
                 drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.5,
                 drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.5);
     }
+
+    public static PathPlannerTrajectory TwoPieceDriveUp(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("2 Piece Drive Up",
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.25,
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.25);
+    }
+
+    public static PathPlannerTrajectory TwoPieceAcquirePiece(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("2 Piece Acquire Piece",
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.75,
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.75);
+    }
+
+    public static PathPlannerTrajectory TwoPieceScorePiece(BeakDrivetrain drivetrain) {
+        return PathPlanner.loadPath("2 Piece Score Piece",
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.75,
+                drivetrain.getPhysics().maxVelocity.getAsMetersPerSecond() * 0.75);
+    }
     // public static Trajectory getTrajectory(String path) {
-    // PathPlannerTrajectory traj = new Trajectory();
+    // Trajectory traj = new Trajectory();
     // try {
     // Path trajPath = Filesystem.getDeployDirectory().toPath().resolve("output/" +
     // path + ".wpilib.json");
