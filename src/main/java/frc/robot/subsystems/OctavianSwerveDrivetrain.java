@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants.PIDConstants;
 import frc.robot.utilities.drive.RobotPhysics;
 import frc.robot.utilities.drive.swerve.BeakSwerveDrivetrain;
 import frc.robot.utilities.drive.swerve.SwerveModuleConfiguration;
@@ -50,7 +49,7 @@ public class OctavianSwerveDrivetrain extends BeakSwerveDrivetrain {
     // distance from the right to left wheels on the robot
     private static final Distance TRACK_WIDTH = Distance.fromInches(22.5);
     // distance from the front to back wheels on the robot
-    private static final Distance WHEEL_BASE = Distance.fromInches(24.41);
+    private static final Distance WHEEL_BASE = Distance.fromInches(24.0);
 
     private static final RobotPhysics PHYSICS = new RobotPhysics(
             MAX_VELOCITY,
@@ -61,34 +60,34 @@ public class OctavianSwerveDrivetrain extends BeakSwerveDrivetrain {
             CONFIGURATION.driveGearRatio,
             FEED_FORWARD);
 
-    private static final int FL_DRIVE_ID = 2;
-    private static final int FL_TURN_ID = 1;
-    private static final int FL_ENCODER_ID = 0; // SHOULD BE 9
-    private static final double FL_OFFSET = -Units.degreesToRadians(247.8); // 247.5);// 244.9 + 180.); //324.4 +
+    private static final int FL_DRIVE_ID = 1;
+    private static final int FL_TURN_ID = 2;
+    private static final int FL_ENCODER_ID = 1; // SHOULD BE 9
+    private static final double FL_OFFSET = -Units.degreesToRadians(199.14); // 247.5);// 244.9 + 180.); //324.4 +
                                                                             // 180.0);
     private static final Translation2d FL_LOCATION = new Translation2d(WHEEL_BASE.getAsMeters() / 2,
             TRACK_WIDTH.getAsMeters() / 2); // TODO: Please God BeakTranslation2d
 
-    private static final int FR_DRIVE_ID = 4;
-    private static final int FR_TURN_ID = 3;
-    private static final int FR_ENCODER_ID = 1; // SHOULD BE 10
-    private static final double FR_OFFSET = -Units.degreesToRadians(248.95); // 248.9);// 317.9 + 180.); //219.6 +
+    private static final int FR_DRIVE_ID = 7;
+    private static final int FR_TURN_ID = 8;
+    private static final int FR_ENCODER_ID = 2; // SHOULD BE 10
+    private static final double FR_OFFSET = -Units.degreesToRadians(277.13); // 248.9);// 317.9 + 180.); //219.6 +
                                                                              // 180.0);
     private static final Translation2d FR_LOCATION = new Translation2d(WHEEL_BASE.getAsMeters() / 2,
             -TRACK_WIDTH.getAsMeters() / 2);
 
-    private static final int BL_DRIVE_ID = 6;
-    private static final int BL_TURN_ID = 5;
-    private static final int BL_ENCODER_ID = 2; // SHOULD BE 11
-    private static final double BL_OFFSET = -Units.degreesToRadians(117.75); // 119.3);// 87.7 + 180.); //135.4 +
+    private static final int BL_DRIVE_ID = 3;
+    private static final int BL_TURN_ID = 4;
+    private static final int BL_ENCODER_ID = 0; // SHOULD BE 11
+    private static final double BL_OFFSET = -Units.degreesToRadians(276.15); // 119.3);// 87.7 + 180.); //135.4 +
                                                                              // 180.0);
     private static final Translation2d BL_LOCATION = new Translation2d(-WHEEL_BASE.getAsMeters() / 2,
             TRACK_WIDTH.getAsMeters() / 2);
 
-    private static final int BR_DRIVE_ID = 8;
-    private static final int BR_TURN_ID = 7;
+    private static final int BR_DRIVE_ID = 5;
+    private static final int BR_TURN_ID = 6;
     private static final int BR_ENCODER_ID = 3; // SHOULD BE 12
-    private static final double BR_OFFSET = -Units.degreesToRadians(46.8); // 44.85);//
+    private static final double BR_OFFSET = -Units.degreesToRadians(139.89); // 44.85);//
                                                                            // -Units.degreesToRadians(44.85);//345.65 +
                                                                            // 180.);
     private static final Translation2d BR_LOCATION = new Translation2d(-WHEEL_BASE.getAsMeters() / 2,
@@ -146,12 +145,14 @@ public class OctavianSwerveDrivetrain extends BeakSwerveDrivetrain {
             BR_LOCATION,
             DRIVE_CONFIG);
 
+        private final static double[] thetaPIDGains = { 6.3, 0., 0.5 };
+
     public OctavianSwerveDrivetrain() {
         super(
                 PHYSICS,
                 m_gyro,
                 false,
-                PIDConstants.Theta.gains,
+                thetaPIDGains,
                 AUTON_DRIVE_GAINS,
                 m_frontLeftConfig,
                 m_frontRightConfig,
