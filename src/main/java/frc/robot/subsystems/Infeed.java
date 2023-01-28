@@ -24,20 +24,22 @@ public class Infeed extends SubsystemBase {
     m_infeedMotor.set(-percent);
   }
   public void infeedFaster(){
-    if(Math.signum(percent)<=1.0){
-      percent+=(0.1*Math.signum(percent));
+    if(percent<=0.6){
+      percent+=0.1;
     }
     if(m_infeedMotor.get()!=0.0){
       m_infeedMotor.set(percent);
     }
+    System.out.println(percent);
   }
   public void infeedSlower(){
-    if(Math.signum(percent)>=0.0){
-      percent-=(0.1*Math.signum(percent));
+    if(percent>=0.2){
+      percent-=0.1;
     }
     if(m_infeedMotor.get()!=0.0){
       m_infeedMotor.set(percent);
     }
+    System.out.println(percent);
   } 
   public static Infeed getInstance(){
     if(m_instance==null){

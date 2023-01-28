@@ -57,8 +57,12 @@ public class RobotContainer {
         m_driverController.start.onTrue(new InstantCommand(m_drive::zero));
         m_driverController.rb.onTrue(new InstantCommand(m_infeed::infeedIn));
         m_driverController.rb.onFalse(new InstantCommand(m_infeed::infeedStop));
+        m_driverController.rt.onTrue(new InstantCommand(m_infeed::infeedOut));
+        m_driverController.rt.onFalse(new InstantCommand(m_infeed::infeedStop));
         m_driverController.lb.onTrue(new InstantCommand(m_infeed::infeedOut));
         m_driverController.lb.onFalse(new InstantCommand(m_infeed::infeedStop));
+        m_driverController.lt.onTrue(new InstantCommand(m_infeed::infeedIn));
+        m_driverController.lt.onFalse(new InstantCommand(m_infeed::infeedStop));
         m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
         m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
     }
