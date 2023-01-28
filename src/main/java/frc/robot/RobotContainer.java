@@ -17,10 +17,10 @@ import frc.robot.subsystems.OctavianSwerveDrivetrain;
 import frc.robot.utilities.BeakXBoxController;
 import frc.robot.utilities.Util;
 import frc.robot.utilities.units.Distance;
-
+import frc.robot.subsystems.Infeed;
 /** Add your docs here. */
 public class RobotContainer {
-    private BeakXBoxController m_driverController = new BeakXBoxController(OIConstants.DRIVER);
+    public BeakXBoxController m_driverController = new BeakXBoxController(OIConstants.DRIVER);
 
     // private NEODrivetrain m_drive = NEODrivetrain.getInstance();
     // private SixNEODrivetrain m_drive = SixNEODrivetrain.getInstance();
@@ -34,7 +34,7 @@ public class RobotContainer {
     private SlewRateLimiter m_xLimiter = new SlewRateLimiter(4.0);
     private SlewRateLimiter m_yLimiter = new SlewRateLimiter(4.0);
     private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(4.0);
-    
+    private Infeed m_infeed = Infeed.getInstance();
     private static RobotContainer _instance = new RobotContainer();
 
     public RobotContainer() {
@@ -55,7 +55,12 @@ public class RobotContainer {
                         m_drive));
 
         m_driverController.start.onTrue(new InstantCommand(m_drive::zero));
-       
+        m_driverController.rb.onTrue(new InstantCommand(m_infeed::infeedIn));
+        m_driverController.rb.onFalse(new InstantCommand(m_infeed::infeedStop));
+        m_driverController.lb.onTrue(new InstantCommand(m_infeed::infeedOut));
+        m_driverController.lb.onFalse(new InstantCommand(m_infeed::infeedStop));
+        m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
+        m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
     }
 
     public double speedScaledDriverLeftY() {
