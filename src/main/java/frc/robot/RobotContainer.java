@@ -67,7 +67,7 @@ public class RobotContainer {
         m_driverController.lt.onFalse(new InstantCommand(m_infeed::infeedStop));
         m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
         m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
-        m_driverController.a.whileTrue(new InstantCommand(m_arm::runMotor));
+        m_driverController.a.whileTrue(new InstantCommand(m_arm::burnMotor));
     }
 
     public double speedScaledDriverLeftY() {

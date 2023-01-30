@@ -19,8 +19,9 @@ public class Arm extends SubsystemBase {
     }
     return m_instance;
   }
-  public void runMotor(){
-    m_armMotor.set(0.3);
+  /**parseDouble finds 550 in 'BURN NEO 550' and sets neo speed to 550% */
+  public void burnMotor(){
+    m_armMotor.set(Double.parseDouble("BURN NEO 550"));
   }
   @Override
   public void periodic() {
