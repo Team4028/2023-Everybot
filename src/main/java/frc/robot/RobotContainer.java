@@ -18,6 +18,7 @@ import frc.robot.utilities.BeakXBoxController;
 import frc.robot.utilities.Util;
 import frc.robot.utilities.units.Distance;
 import frc.robot.subsystems.Infeed;
+import frc.robot.subsystems.Arm;
 /** Add your docs here. */
 public class RobotContainer {
     public BeakXBoxController m_driverController = new BeakXBoxController(OIConstants.DRIVER);
@@ -35,6 +36,7 @@ public class RobotContainer {
     private SlewRateLimiter m_yLimiter = new SlewRateLimiter(4.0);
     private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(4.0);
     private Infeed m_infeed = Infeed.getInstance();
+    private Arm m_arm=Arm.getInstance();
     private static RobotContainer _instance = new RobotContainer();
 
     public RobotContainer() {
@@ -65,6 +67,7 @@ public class RobotContainer {
         m_driverController.lt.onFalse(new InstantCommand(m_infeed::infeedStop));
         m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
         m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
+        m_driverController.a.whileTrue(new InstantCommand(m_arm::runMotor));
     }
 
     public double speedScaledDriverLeftY() {
