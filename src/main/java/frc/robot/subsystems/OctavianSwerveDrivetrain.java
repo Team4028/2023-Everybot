@@ -151,7 +151,7 @@ public class OctavianSwerveDrivetrain extends BeakSwerveDrivetrain {
         super(
                 PHYSICS,
                 m_gyro,
-                false,
+                true,
                 thetaPIDGains,
                 AUTON_DRIVE_GAINS,
                 m_frontLeftConfig,
