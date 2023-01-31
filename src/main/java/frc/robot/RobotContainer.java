@@ -22,16 +22,13 @@ import frc.robot.subsystems.Arm;
 /** Add your docs here. */
 public class RobotContainer {
     public BeakXBoxController m_driverController = new BeakXBoxController(OIConstants.DRIVER);
-
     // private NEODrivetrain m_drive = NEODrivetrain.getInstance();
     // private SixNEODrivetrain m_drive = SixNEODrivetrain.getInstance();
     // private CIMDrivetrain m_drive = CIMDrivetrain.getInstance();
     // private FalconDrivetrain m_drive = FalconDrivetrain.getInstance();
     // private OctavianSwerveDrivetrain m_drive = OctavianSwerveDrivetrain.getInstance();
-    private OctavianSwerveDrivetrain m_drive = OctavianSwerveDrivetrain.getInstance();
-    // private PracticeSwerveDrivetrain m_drive = PracticeSwerveDrivetrain.getInstance();
-    
-
+    public OctavianSwerveDrivetrain m_drive = OctavianSwerveDrivetrain.getInstance();
+    // private PracticeSwerveDrivetrain m_drive = PracticeSwerveDrivetrain.getInstance(); 
     private SlewRateLimiter m_xLimiter = new SlewRateLimiter(4.0);
     private SlewRateLimiter m_yLimiter = new SlewRateLimiter(4.0);
     private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(4.0);
@@ -67,7 +64,7 @@ public class RobotContainer {
         m_driverController.lt.onFalse(new InstantCommand(m_infeed::infeedStop));
         m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
         m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
-        m_driverController.a.whileTrue(new InstantCommand(m_arm::burnMotor));
+        m_driverController.a.onTrue(new InstantCommand(m_arm::runMotor));
     }
 
     public double speedScaledDriverLeftY() {
