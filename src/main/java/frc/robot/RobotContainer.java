@@ -54,16 +54,14 @@ public class RobotContainer {
                         m_drive));
 
         m_driverController.start.onTrue(new InstantCommand(m_drive::zero));
-        m_driverController.rb.onTrue(new InstantCommand(m_infeed::infeedIn));
-        m_driverController.rb.onFalse(new InstantCommand(m_infeed::infeedStop));
-        m_driverController.rt.onTrue(new InstantCommand(m_infeed::infeedOut));
-        m_driverController.rt.onFalse(new InstantCommand(m_infeed::infeedStop));
-        m_driverController.lb.onTrue(new InstantCommand(m_infeed::infeedOut));
-        m_driverController.lb.onFalse(new InstantCommand(m_infeed::infeedStop));
-        m_driverController.lt.onTrue(new InstantCommand(m_infeed::infeedIn));
-        m_driverController.lt.onFalse(new InstantCommand(m_infeed::infeedStop));
         m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
         m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
+        m_driverController.lb.onTrue(new InstantCommand(m_infeed::infeedIn));
+        m_driverController.lb.onFalse(new InstantCommand(m_infeed::infeedStop));
+        m_driverController.lt.onTrue(new InstantCommand(m_infeed::infeedOut));
+        m_driverController.lt.onFalse(new InstantCommand(m_infeed::infeedStop));
+        m_driverController.y.onTrue(new InstantCommand(m_infeed::changeModeCone));
+        m_driverController.x.onTrue(new InstantCommand(m_infeed::changeModeCube));
         m_driverController.a.onTrue(new InstantCommand(m_arm::runMotor));
     }
 
