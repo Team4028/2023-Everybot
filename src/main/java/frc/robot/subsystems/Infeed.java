@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Infeed extends SubsystemBase {
   private static Infeed m_instance;
   private WPI_TalonSRX m_infeedMotor;
-  private int infeedMode=1;
+  private int infeedMode=-1;
   private double percent=0.6;
   /** Creates a new Infeed. */
   public Infeed(){
@@ -28,7 +28,7 @@ public class Infeed extends SubsystemBase {
       percent+=0.1;
     }
     if(m_infeedMotor.get()!=0.0){
-      m_infeedMotor.set(percent);
+      m_infeedMotor.set(infeedMode*percent);
     }
     System.out.println(percent);
   }
@@ -37,15 +37,15 @@ public class Infeed extends SubsystemBase {
       percent-=0.1;
     }
     if(m_infeedMotor.get()!=0.0){
-      m_infeedMotor.set(percent);
+      m_infeedMotor.set(infeedMode*percent);
     }
     System.out.println(percent);
   } 
   public void changeModeCube(){
-    infeedMode=1;
+    infeedMode=-1;
   }
   public void changeModeCone(){
-    infeedMode=-1;
+    infeedMode=1;
   }
   public static Infeed getInstance(){
     if(m_instance==null){
