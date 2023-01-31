@@ -69,7 +69,6 @@ public class RobotContainer {
         m_driverController.x.onTrue(new InstantCommand(m_infeed::changeModeCube));
         m_driverController.a.onTrue(new InstantCommand(m_arm::runMotor));
     }
-
     public double speedScaledDriverLeftY() {
         return m_yLimiter.calculate(Util.speedScale(m_driverController.getLeftYAxis(),
                 DriveConstants.SPEED_SCALE,
