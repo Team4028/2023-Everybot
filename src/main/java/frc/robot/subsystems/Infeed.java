@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Infeed extends SubsystemBase {
   private static Infeed m_instance;
-  public static WPI_TalonSRX m_infeedMotor;
+  private static WPI_TalonSRX m_infeedMotor;
   private int infeedMode=-1;
   private double percent=0.6;
   /** Creates a new Infeed. */
@@ -52,6 +52,9 @@ public class Infeed extends SubsystemBase {
       m_instance=new Infeed();
     }
     return m_instance;
+  }
+  public static double getMotorOutput(){
+      return m_infeedMotor.get();
   }
   @Override
   public void periodic() {

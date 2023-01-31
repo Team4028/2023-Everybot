@@ -57,7 +57,7 @@ public class RobotContainer {
         m_driverController.dpadLeft.onTrue(new InstantCommand(m_infeed::infeedSlower));
         m_driverController.dpadRight.onTrue(new InstantCommand(m_infeed::infeedFaster));
         m_driverController.lb.onTrue(new InstantCommand(()->{
-            if(frc.robot.subsystems.Infeed.m_infeedMotor.get()==0.0){
+            if(frc.robot.subsystems.Infeed.getMotorOutput()==0.0){
                 m_infeed.infeedOut();
             } else{
                 m_infeed.infeedStop();
