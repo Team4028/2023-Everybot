@@ -9,7 +9,7 @@ public class Infeed extends SubsystemBase {
   private static Infeed m_instance;
   private static WPI_TalonSRX m_infeedMotor;
   private int infeedMode=-1;
-  private double percent=0.6;
+  private double percent=0.7;
   /** Creates a new Infeed. */
   public Infeed(){
     m_infeedMotor=new WPI_TalonSRX(11);
